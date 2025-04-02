@@ -4,6 +4,8 @@
       name = "hiroshi-tools";
       paths = [
         neovim
+        nodejs
+        clang-tools
       ];
     };
   };
