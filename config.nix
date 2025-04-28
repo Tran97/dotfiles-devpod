@@ -6,6 +6,7 @@
         neovim
         nodejs
         clang-tools
+        ghostty
       ];
     };
   };

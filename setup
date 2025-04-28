@@ -9,11 +9,17 @@ export XDG_DATA_HOME="$HOME/.local/share"
 mkdir -p "$XDG_CONFIG_HOME/nixpkgs"
 mkdir -p "$XDG_CONFIG_HOME/nvim"
 mkdir -p "$XDG_DATA_HOME/nvim"
+mkdir -p "$XDG_DATA_HOME/ghostty"
 
 # Copy configurations (not symlink)
 if [ -d "nvim" ]; then
     echo "Persisting nvim config..."
     cp -r nvim/* "$XDG_CONFIG_HOME/nvim/"
+fi
+
+if [ -d "ghostty" ]; then
+    echo "Persisting nvim config..."
+    cp -r ghostty/* "$XDG_CONFIG_HOME/ghostty/"
 fi
 
 if [ -f "config.nix" ]; then
