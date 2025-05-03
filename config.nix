@@ -6,6 +6,8 @@
         neovim
         nodejs
         clang-tools
+        (python3.12.withPackages (ps: [ ps.venv ]))
+        unzip
       ];
     };
   };
