@@ -25,6 +25,23 @@ fi
 echo "Installing Nix packages..."
 nix-env -iA nixpkgs.myPackages
 
+# Check for Ubuntu aarch64 and set up clangd if needed
+if [ "$(uname -m)" = "aarch64" ] && grep -q "Ubuntu" /etc/os-release; then
+    echo "Detected Ubuntu aarch64 - setting up clangd..."
+    
+    # Create clangd package directory
+    mkdir -p "$XDG_DATA_HOME/nvim/mason/packages/clangd"
+    
+    # Create symlink for clangd in mason bin directory
+    mkdir -p "$XDG_DATA_HOME/nvim/mason/bin"
+    if command -v clangd >/dev/null 2>&1; then
+        ln -sf "$(command -v clangd)" "$XDG_DATA_HOME/nvim/mason/bin/clangd"
+        echo "Created symlink for clangd in mason bin directory"
+    else
+        echo "Warning: clangd not found in PATH, skipping symlink creation"
+    fi
+fi
+
 # Verify installations
 echo "Verifying installations..."
 command -v nvim >/dev/null 2>&1 && echo "nvim installed successfully" || echo "nvim installation failed"
