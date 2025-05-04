@@ -8,6 +8,7 @@
         clang-tools
         python3
         unzip
+        xclip
       ];
     };
   };
