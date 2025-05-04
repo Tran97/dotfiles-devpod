@@ -6,7 +6,7 @@
         neovim
         nodejs
        # clang-tools
-        (clang-tools.override { llvmPackages = llvmPackages_16; })  # Use clangd 16.x
+        llvmPackages_16.clang-tools  # Directly use clangd from LLVM 16
         python3
         unzip
       ];
