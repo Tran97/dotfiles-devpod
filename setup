@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e  # Exit on error
 
+# Ensure clangd is installed only if missing
+if ! command -v clangd >/dev/null 2>&1; then
+    echo "clangd not found, installing with apt..."
+    sudo apt-get update && sudo apt-get install -y clangd
+else
+    echo "clangd is already installed."
+fi
+
 # Set up XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -24,11 +32,6 @@ fi
 # Install Nix packages
 echo "Installing Nix packages..."
 nix-env -iA nixpkgs.myPackages
-
-# Update package list and install clangd
-echo "Installing clangd with apt..."
-sudo apt update
-sudo apt install -y clang
 
 # Verify installations
 echo "Verifying installations..."
