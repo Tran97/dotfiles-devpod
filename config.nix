@@ -5,7 +5,7 @@
       paths = [
         neovim
         nodejs
-        clang-tools
+        clang-tools_18
         python3
         unzip
         xclip
