@@ -25,6 +25,11 @@ fi
 echo "Installing Nix packages..."
 nix-env -iA nixpkgs.myPackages
 
+# Update package list and install clangd
+echo "Installing clangd with apt..."
+sudo apt update
+sudo apt install -y clang
+
 # Verify installations
 echo "Verifying installations..."
 command -v nvim >/dev/null 2>&1 && echo "nvim installed successfully" || echo "nvim installation failed"
